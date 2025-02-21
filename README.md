@@ -1,4 +1,4 @@
-# AutoDRIVE-Roboracer Sim-Racing
+# AutoDRIVE-RoboRacer Sim-Racing
 
 ![Github Stars](https://img.shields.io/github/stars/AutoDRIVE-Ecosystem/AutoDRIVE-F1TENTH-Sim-Racing?style=flat&color=blue&label=stars&logo=github&logoColor=white)
 ![Github Forks](https://img.shields.io/github/forks/AutoDRIVE-Ecosystem/AutoDRIVE-F1TENTH-Sim-Racing?style=flat&color=blue&label=forks&logo=github&logoColor=white)
@@ -8,9 +8,9 @@
 [![API Docker Stars](https://badgen.net/docker/stars/autodriveecosystem/autodrive_f1tenth_api?icon=docker&label=api%20stars)](https://hub.docker.com/r/autodriveecosystem/autodrive_f1tenth_api/)
 [![API Docker Pulls](https://badgen.net/docker/pulls/autodriveecosystem/autodrive_f1tenth_api?icon=docker&label=api%20pulls)](https://hub.docker.com/r/autodriveecosystem/autodrive_f1tenth_api/)
 
-![AutoDRIVE-Roboracer Sim-Racing](Banner.png)
+![AutoDRIVE-RoboRacer Sim-Racing](Banner.png)
 
-Roboracer Digital Twin Autonomous Sim-Racing League using AutoDRIVE Ecosystem
+RoboRacer Digital Twin Autonomous Sim-Racing League using AutoDRIVE Ecosystem
 
 > [!NOTE]
 > - The setup has been only tested on the [Ubuntu](https://ubuntu.com) operating system.
@@ -32,7 +32,7 @@ docker build --tag autodriveecosystem/autodrive_roboracer_sim:<TAG> -f autodrive
 
 ```bash
 xhost local:root
-docker run --name autodrive_roboracer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_sim:<TAG>
+docker run --name autodrive_RoboRacer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_RoboRacer_sim:<TAG>
 ```
 
 ### Push:
@@ -40,7 +40,7 @@ docker run --name autodrive_roboracer_sim --rm -it --entrypoint /bin/bash --netw
 1. Run the image you created in the previous step inside a container:
 ```bash
 xhost local:root
-docker run --name autodrive_roboracer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_sim:<TAG>
+docker run --name autodrive_RoboRacer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_RoboRacer_sim:<TAG>
 ```
 
 2. In a new terminal window, list all containers and make a note of the desired `CONTAINER ID`:
@@ -50,7 +50,7 @@ docker ps -a
 
 3. Commit changes to Docker Hub:
 ```bash
-docker commit -m "AutoDRIVE-Roboracer-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_roboracer_sim:<TAG>
+docker commit -m "AutoDRIVE-RoboRacer-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_roboracer_sim:<TAG>
 ```
 
 4. Login to Docker Hub:
@@ -96,7 +96,7 @@ docker ps -a
 
 3. Commit changes to Docker Hub:
 ```bash
-docker commit -m "AutoDRIVE-Roboracer-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_roboracer_api:<TAG>
+docker commit -m "AutoDRIVE-RoboRacer-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_roboracer_api:<TAG>
 ```
 
 4. Login to Docker Hub:
