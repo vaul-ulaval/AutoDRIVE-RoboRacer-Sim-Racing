@@ -1,4 +1,4 @@
-# AutoDRIVE-F1TENTH Sim-Racing
+# AutoDRIVE-Roboracer Sim-Racing
 
 ![Github Stars](https://img.shields.io/github/stars/AutoDRIVE-Ecosystem/AutoDRIVE-F1TENTH-Sim-Racing?style=flat&color=blue&label=stars&logo=github&logoColor=white)
 ![Github Forks](https://img.shields.io/github/forks/AutoDRIVE-Ecosystem/AutoDRIVE-F1TENTH-Sim-Racing?style=flat&color=blue&label=forks&logo=github&logoColor=white)
@@ -8,9 +8,9 @@
 [![API Docker Stars](https://badgen.net/docker/stars/autodriveecosystem/autodrive_f1tenth_api?icon=docker&label=api%20stars)](https://hub.docker.com/r/autodriveecosystem/autodrive_f1tenth_api/)
 [![API Docker Pulls](https://badgen.net/docker/pulls/autodriveecosystem/autodrive_f1tenth_api?icon=docker&label=api%20pulls)](https://hub.docker.com/r/autodriveecosystem/autodrive_f1tenth_api/)
 
-![AutoDRIVE-F1TENTH Sim-Racing](Banner.png)
+![AutoDRIVE-Roboracer Sim-Racing](Banner.png)
 
-F1TENTH Digital Twin Autonomous Sim-Racing League using AutoDRIVE Ecosystem
+Roboracer Digital Twin Autonomous Sim-Racing League using AutoDRIVE Ecosystem
 
 > [!NOTE]
 > - The setup has been only tested on the [Ubuntu](https://ubuntu.com) operating system.
@@ -25,14 +25,14 @@ F1TENTH Digital Twin Autonomous Sim-Racing League using AutoDRIVE Ecosystem
 ### Build:
 
 ```bash
-docker build --tag autodriveecosystem/autodrive_f1tenth_sim:<TAG> -f autodrive_simulator.Dockerfile .
+docker build --tag autodriveecosystem/autodrive_roboracer_sim:<TAG> -f autodrive_simulator.Dockerfile .
 ```
 
 ### Run:
 
 ```bash
 xhost local:root
-docker run --name autodrive_f1tenth_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_f1tenth_sim:<TAG>
+docker run --name autodrive_roboracer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_sim:<TAG>
 ```
 
 ### Push:
@@ -40,7 +40,7 @@ docker run --name autodrive_f1tenth_sim --rm -it --entrypoint /bin/bash --networ
 1. Run the image you created in the previous step inside a container:
 ```bash
 xhost local:root
-docker run --name autodrive_f1tenth_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_f1tenth_sim:<TAG>
+docker run --name autodrive_roboracer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_sim:<TAG>
 ```
 
 2. In a new terminal window, list all containers and make a note of the desired `CONTAINER ID`:
@@ -50,7 +50,7 @@ docker ps -a
 
 3. Commit changes to Docker Hub:
 ```bash
-docker commit -m "AutoDRIVE-F1TENTH-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_f1tenth_sim:<TAG>
+docker commit -m "AutoDRIVE-Roboracer-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_roboracer_sim:<TAG>
 ```
 
 4. Login to Docker Hub:
@@ -60,7 +60,7 @@ docker login
 
 5. Push the container to Docker Hub, once done, you should be able to see your repository on Docker Hub:
 ```bash
-docker push autodriveecosystem/autodrive_f1tenth_sim:<TAG>
+docker push autodriveecosystem/autodrive_roboracer_sim:<TAG>
 ```
 
 ## AutoDRIVE Devkit Container
@@ -71,14 +71,14 @@ docker push autodriveecosystem/autodrive_f1tenth_sim:<TAG>
 ### Build:
 
 ```bash
-docker build --tag autodriveecosystem/autodrive_f1tenth_api:<TAG> -f autodrive_devkit.Dockerfile .
+docker build --tag autodriveecosystem/autodrive_roboracer_api:<TAG> -f autodrive_devkit.Dockerfile .
 ```
 
 ### Run:
 
 ```bash
 xhost local:root
-docker run --name autodrive_f1tenth_api --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_f1tenth_api:<TAG>
+docker run --name autodrive_roboracer_api --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_api:<TAG>
 ```
 
 ### Push:
@@ -86,7 +86,7 @@ docker run --name autodrive_f1tenth_api --rm -it --entrypoint /bin/bash --networ
 1. Run the image you created in the previous step inside a container:
 ```bash
 xhost local:root
-docker run --name autodrive_f1tenth_api --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_f1tenth_api:<TAG>
+docker run --name autodrive_roboracer_api --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_api:<TAG>
 ```
 
 2. In a new terminal window, list all containers and make a note of the desired `CONTAINER ID`:
@@ -96,7 +96,7 @@ docker ps -a
 
 3. Commit changes to Docker Hub:
 ```bash
-docker commit -m "AutoDRIVE-F1TENTH-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_f1tenth_api:<TAG>
+docker commit -m "AutoDRIVE-Roboracer-Sim-Racing" -a "AutoDRIVE Ecosystem" <CONTAINER ID> autodriveecosystem/autodrive_roboracer_api:<TAG>
 ```
 
 4. Login to Docker Hub:
@@ -106,7 +106,7 @@ docker login
 
 5. Push the container to Docker Hub, once done, you should be able to see your repository on Docker Hub:
 ```bash
-docker push autodriveecosystem/autodrive_f1tenth_api:<TAG>
+docker push autodriveecosystem/autodrive_roboracer_api:<TAG>
 ```
 
 ## Competition Execution
@@ -119,20 +119,20 @@ docker pull <TEAM_USERNAME>/<IMAGE_NAME>:<TAG>
 2. Run the team's image you pulled in the previous step inside a container:
 ```bash
 xhost local:root
-docker run --name autodrive_f1tenth_api --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all <TEAM_USERNAME>/<IMAGE_NAME>:<TAG>
+docker run --name autodrive_roboracer_api --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all <TEAM_USERNAME>/<IMAGE_NAME>:<TAG>
 ```
 
 3. Run the simulator image inside a container, set graphics to `Ultra` quality and vehicle in `Autonomous` mode:
 ```bash
 xhost local:root
-docker run --name autodrive_f1tenth_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_f1tenth_sim:<TAG>
+docker run --name autodrive_roboracer_sim --rm -it --entrypoint /bin/bash --network=host --ipc=host -v /tmp/.X11-unix:/tmp.X11-umix:rw --env DISPLAY --privileged --gpus all autodriveecosystem/autodrive_roboracer_sim:<TAG>
 ```
 
 4. Begin screen recording (tested with [OBS Studio](https://obsproject.com)).
 
 5. Execute a new bash session within the team's container, launch `rqtgraph` for inspection and start recording all data streams:
 ```bash
-docker exec -it autodrive_f1tenth_api bash
+docker exec -it autodrive_roboracer_api bash
 ros2 bag record -a -o qualification.bag
 ros2 bag record -a -o competition.bag
 rqtgraph
@@ -142,9 +142,9 @@ rqtgraph
 
 7. After the race completion, kill the `rqtgraph`, data recording as well as screen recording processes, and copy the `rosgraph` and `rosbag` file to the host workstation:
 ```bash
-docker cp autodrive_f1tenth_api:/home/autodrive_devkit/qualification.bag /home/<USERNAME>
-docker cp autodrive_f1tenth_api:/home/autodrive_devkit/competition.bag /home/<USERNAME>
-docker cp autodrive_f1tenth_api:/home/autodrive_devkit/rosgraph.png /home/<USERNAME>
+docker cp autodrive_roboracer_api:/home/autodrive_devkit/qualification.bag /home/<USERNAME>
+docker cp autodrive_roboracer_api:/home/autodrive_devkit/competition.bag /home/<USERNAME>
+docker cp autodrive_roboracer_api:/home/autodrive_devkit/rosgraph.png /home/<USERNAME>
 ```
 
 ## Generally Helpful Docker Tips
