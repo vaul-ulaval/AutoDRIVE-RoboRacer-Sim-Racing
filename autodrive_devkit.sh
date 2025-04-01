@@ -9,7 +9,7 @@ source /home/autodrive_devkit/install/setup.bash
 cd /home/autodrive_devkit
 
 # Launch AutoDRIVE Devkit with GUI
-# ros2 launch autodrive_f1tenth simulator_bringup_rviz.launch.py
+# ros2 launch autodrive_roboracer bringup_graphics.launch.py
 
 # Launch AutoDRIVE Devkit Headless
-# ros2 launch autodrive_f1tenth simulator_bringup_headless.launch.py
+# ros2 launch autodrive_roboracer bringup_headless.launch.py
