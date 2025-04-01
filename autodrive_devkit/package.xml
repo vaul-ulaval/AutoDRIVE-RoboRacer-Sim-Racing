@@ -2,9 +2,9 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
 
-  <name>autodrive_f1tenth</name>
+  <name>autodrive_roboracer</name>
   <version>0.1.0</version>
-  <description>AutoDRIVE Ecosystem ROS 2 Package for F1TENTH</description>
+  <description>AutoDRIVE Ecosystem ROS 2 Package for RoboRacer</description>
 
   <maintainer email="tsamak@clemson.edu">Tanmay Vilas Samak</maintainer>
   <maintainer email="csamak@clemson.edu">Chinmay Vilas Samak</maintainer>

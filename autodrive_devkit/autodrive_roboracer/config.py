@@ -2,7 +2,7 @@
 
 ################################################################################
 
-# Copyright (c) 2023, Tinker Twins
+# Copyright (c) 2025, Tinker Twins
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -49,24 +49,24 @@ except ImportError: # attrdict broken in Python 3.10 and not maintained
 # ROS 2 publishers and subscribers
 pub_sub_dict = AttrDict({
     'subscribers': [
-        {'topic':'/autodrive/f1tenth_1/throttle_command', 'type': Float32, 'name': 'sub_throttle_command'},
-        {'topic':'/autodrive/f1tenth_1/steering_command', 'type': Float32, 'name': 'sub_steering_command'},
+        {'topic':'/autodrive/roboracer_1/throttle_command', 'type': Float32, 'name': 'sub_throttle_command'},
+        {'topic':'/autodrive/roboracer_1/steering_command', 'type': Float32, 'name': 'sub_steering_command'},
         {'topic':'/autodrive/reset_command', 'type': Bool, 'name': 'callback_reset_command'}
     ],
     'publishers': [
-        {'topic': '/autodrive/f1tenth_1/throttle', 'type': Float32, 'name': 'pub_throttle'},
-        {'topic': '/autodrive/f1tenth_1/steering', 'type': Float32, 'name': 'pub_steering'},
-        {'topic': '/autodrive/f1tenth_1/speed', 'type': Float32, 'name': 'pub_speed'},
-        {'topic': '/autodrive/f1tenth_1/left_encoder', 'type': JointState, 'name': 'pub_left_encoder'},
-        {'topic': '/autodrive/f1tenth_1/right_encoder', 'type': JointState, 'name': 'pub_right_encoder'},
-        {'topic': '/autodrive/f1tenth_1/ips', 'type': Point, 'name': 'pub_ips'},
-        {'topic': '/autodrive/f1tenth_1/imu', 'type': Imu, 'name': 'pub_imu'},
-        {'topic': '/autodrive/f1tenth_1/lidar', 'type': LaserScan, 'name': 'pub_lidar'},
-        {'topic': '/autodrive/f1tenth_1/front_camera', 'type': Image, 'name': 'pub_front_camera'},
-        {'topic': '/autodrive/f1tenth_1/lap_count', 'type': Int32, 'name': 'pub_lap_count'},
-        {'topic': '/autodrive/f1tenth_1/lap_time', 'type': Float32, 'name': 'pub_lap_time'},
-        {'topic': '/autodrive/f1tenth_1/last_lap_time', 'type': Float32, 'name': 'pub_last_lap_time'},
-        {'topic': '/autodrive/f1tenth_1/best_lap_time', 'type': Float32, 'name': 'pub_best_lap_time'},
-        {'topic': '/autodrive/f1tenth_1/collision_count', 'type': Int32, 'name': 'pub_collision_count'}
+        {'topic': '/autodrive/roboracer_1/throttle', 'type': Float32, 'name': 'pub_throttle'},
+        {'topic': '/autodrive/roboracer_1/steering', 'type': Float32, 'name': 'pub_steering'},
+        {'topic': '/autodrive/roboracer_1/speed', 'type': Float32, 'name': 'pub_speed'},
+        {'topic': '/autodrive/roboracer_1/left_encoder', 'type': JointState, 'name': 'pub_left_encoder'},
+        {'topic': '/autodrive/roboracer_1/right_encoder', 'type': JointState, 'name': 'pub_right_encoder'},
+        {'topic': '/autodrive/roboracer_1/ips', 'type': Point, 'name': 'pub_ips'},
+        {'topic': '/autodrive/roboracer_1/imu', 'type': Imu, 'name': 'pub_imu'},
+        {'topic': '/autodrive/roboracer_1/lidar', 'type': LaserScan, 'name': 'pub_lidar'},
+        {'topic': '/autodrive/roboracer_1/front_camera', 'type': Image, 'name': 'pub_front_camera'},
+        {'topic': '/autodrive/roboracer_1/lap_count', 'type': Int32, 'name': 'pub_lap_count'},
+        {'topic': '/autodrive/roboracer_1/lap_time', 'type': Float32, 'name': 'pub_lap_time'},
+        {'topic': '/autodrive/roboracer_1/last_lap_time', 'type': Float32, 'name': 'pub_last_lap_time'},
+        {'topic': '/autodrive/roboracer_1/best_lap_time', 'type': Float32, 'name': 'pub_best_lap_time'},
+        {'topic': '/autodrive/roboracer_1/collision_count', 'type': Int32, 'name': 'pub_collision_count'}
     ]
 })

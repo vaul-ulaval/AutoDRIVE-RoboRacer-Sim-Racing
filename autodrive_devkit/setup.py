@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'autodrive_f1tenth'
+package_name = 'autodrive_roboracer'
 
 setup(
     name=package_name,
@@ -19,13 +19,13 @@ setup(
     zip_safe=True,
     maintainer='Chinmay Vilas Samak' 'Tanmay Vilas Samak',
     maintainer_email='csamak@clemson.edu' 'tsamak@clemson.edu',
-    description='AutoDRIVE Ecosystem ROS 2 Package for F1TENTH',
+    description='AutoDRIVE Ecosystem ROS 2 Package for RoboRacer',
     license='BSD',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'autodrive_bridge = autodrive_f1tenth.autodrive_bridge:main', # AutoDRIVE ROS 2 bridge
-            'teleop_keyboard = autodrive_f1tenth.teleop_keyboard:main', # Teleoperation with keyboard
+            'autodrive_bridge = autodrive_roboracer.autodrive_bridge:main', # AutoDRIVE ROS 2 bridge
+            'teleop_keyboard = autodrive_roboracer.teleop_keyboard:main', # Teleoperation with keyboard
         ],
     },
 )

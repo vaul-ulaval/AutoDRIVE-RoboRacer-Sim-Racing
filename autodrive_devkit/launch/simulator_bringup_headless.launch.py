@@ -1,4 +1,4 @@
-# Copyright (c) 2023, Tinker Twins
+# Copyright (c) 2025, Tinker Twins
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         Node(
-            package='autodrive_f1tenth',
+            package='autodrive_roboracer',
             executable='autodrive_bridge',
             name='autodrive_bridge',
             emulate_tty=True,

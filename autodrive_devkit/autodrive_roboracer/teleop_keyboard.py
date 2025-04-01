@@ -2,7 +2,7 @@
 
 ################################################################################
 
-# Copyright (c) 2023, Tinker Twins
+# Copyright (c) 2025, Tinker Twins
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -53,14 +53,14 @@ STEER_STEP_SIZE = 0.2
 
 # Information
 info = """
----------------------------------------
-AutoDRIVE - F1TENTH Teleoperation Panel
----------------------------------------
+-----------------------------------------
+AutoDRIVE - RoboRacer Teleoperation Panel
+-----------------------------------------
 
-              Q   W   E
-              A   S   D
-                  X
-                  R
+               Q   W   E
+               A   S   D
+                   X
+                   R
 
 W/S : Increase/decrease drive command
 D/A : Increase/decrease steer command
@@ -71,7 +71,7 @@ R   : Soft-reset the simulator
 Press CTRL+C to quit
 
 NOTE: Press keys within this terminal
----------------------------------------
+-----------------------------------------
 """
 
 # Error
@@ -124,8 +124,8 @@ def main():
     rclpy.init()
     qos = QoSProfile(depth=1)
     node = rclpy.create_node('teleop_keyboard')
-    pub_steering_command = node.create_publisher(Float32, '/autodrive/f1tenth_1/steering_command', qos)
-    pub_throttle_command = node.create_publisher(Float32, '/autodrive/f1tenth_1/throttle_command', qos)
+    pub_steering_command = node.create_publisher(Float32, '/autodrive/roboracer_1/steering_command', qos)
+    pub_throttle_command = node.create_publisher(Float32, '/autodrive/roboracer_1/throttle_command', qos)
     pub_reset_command = node.create_publisher(Bool, '/autodrive/reset_command', qos)
 
     # Initialize
