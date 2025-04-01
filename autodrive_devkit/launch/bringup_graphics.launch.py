@@ -42,6 +42,6 @@ def generate_launch_description():
             package='rviz2',
             executable='rviz2',
             name='rviz',
-            arguments=['-d', [FindPackageShare("autodrive_roboracer"), '/rviz', '/simulator.rviz',]]
+            arguments=['-d', [FindPackageShare("autodrive_roboracer"), '/rviz', '/autodrive_roboracer.rviz',]]
         ),
     ])
