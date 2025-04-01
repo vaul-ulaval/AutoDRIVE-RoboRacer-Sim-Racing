@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Setup development environment
+# Setup Development Environment
 source /opt/ros/humble/setup.bash
 source /home/autodrive_devkit/install/setup.bash
 
