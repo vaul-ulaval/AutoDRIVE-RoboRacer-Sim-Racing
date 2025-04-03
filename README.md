@@ -6,7 +6,7 @@
 [![Sim Docker Stars](https://badgen.net/docker/stars/autodriveecosystem/autodrive_roboracer_sim?icon=docker&label=sim%20stars)](https://hub.docker.com/r/autodriveecosystem/autodrive_roboracer_sim/)
 [![Sim Docker Pulls](https://badgen.net/docker/pulls/autodriveecosystem/autodrive_roboracer_sim?icon=docker&label=sim%20pulls)](https://hub.docker.com/r/autodriveecosystem/autodrive_roboracer_sim/)
 [![API Docker Stars](https://badgen.net/docker/stars/autodriveecosystem/autodrive_roboracer_api?icon=docker&label=api%20stars)](https://hub.docker.com/r/autodriveecosystem/autodrive_roboracer_api/)
-
+[![API Docker Pulls](https://badgen.net/docker/pulls/autodriveecosystem/autodrive_roboracer_api?icon=docker&label=api%20pulls)](https://hub.docker.com/r/autodriveecosystem/autodrive_roboracer_api/)
 
 ![AutoDRIVE-RoboRacer Sim-Racing](Banner.png)
 
