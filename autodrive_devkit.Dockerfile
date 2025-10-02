@@ -23,7 +23,8 @@ RUN apt update \
 
 # Install Python dependencies
 RUN pip3 install attrdict
-RUN pip3 install numpy
+# pin numpy<2 to avoid opencv bridge conflicts 
+RUN pip3 install "numpy<2" 
 RUN pip3 install pillow
 RUN pip3 install opencv-contrib-python
 RUN pip3 install eventlet==0.33.3
