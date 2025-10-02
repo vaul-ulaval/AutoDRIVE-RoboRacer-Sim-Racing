@@ -291,39 +291,6 @@ def bridge(sid, data):
         autodrive.best_lap_time = float(data["V1 Best Lap Time"])
         autodrive.collision_count = int(float(data["V1 Collisions"]))
 
-        # Actuator feedbacks
-        publish_actuator_feedbacks(autodrive.throttle, autodrive.steering)
-        # Speed
-        publish_speed_data(autodrive.speed)
-        # Wheel encoders
-        publish_encoder_data(autodrive.encoder_angles)
-        # IPS
-        publish_ips_data(autodrive.position)
-        # IMU
-        publish_imu_data(autodrive.orientation_quaternion, autodrive.angular_velocity, autodrive.linear_acceleration)
-        # Cooordinate transforms
-        broadcast_transform(msg_transform, transform_broadcaster, "roboracer_1", "world", autodrive.position, autodrive.orientation_quaternion) # Vehicle frame defined at center of rear axle
-        broadcast_transform(msg_transform, transform_broadcaster, "left_encoder", "roboracer_1", np.asarray([0.0, 0.12, 0.0]), quaternion_from_euler(0.0, 120*autodrive.encoder_angles[0]%6.283, 0.0))
-        broadcast_transform(msg_transform, transform_broadcaster, "right_encoder", "roboracer_1", np.asarray([0.0, -0.12, 0.0]), quaternion_from_euler(0.0, 120*autodrive.encoder_angles[1]%6.283, 0.0))
-        broadcast_transform(msg_transform, transform_broadcaster, "ips", "roboracer_1", np.asarray([0.08, 0.0, 0.055]), np.asarray([0.0, 0.0, 0.0, 1.0]))
-        broadcast_transform(msg_transform, transform_broadcaster, "imu", "roboracer_1", np.asarray([0.08, 0.0, 0.055]), np.asarray([0.0, 0.0, 0.0, 1.0]))
-        broadcast_transform(msg_transform, transform_broadcaster, "lidar", "roboracer_1", np.asarray([0.2733, 0.0, 0.096]), np.asarray([0.0, 0.0, 0.0, 1.0]))
-        broadcast_transform(msg_transform, transform_broadcaster, "front_camera", "roboracer_1", np.asarray([-0.015, 0.0, 0.15]), np.asarray([0, 0.0871557, 0, 0.9961947]))
-        broadcast_transform(msg_transform, transform_broadcaster, "front_left_wheel", "roboracer_1", np.asarray([0.33, 0.118, 0.0]), quaternion_from_euler(0.0, 0.0, np.arctan((2*0.141537*np.tan(autodrive.steering))/(2*0.141537-2*0.0765*np.tan(autodrive.steering)))))
-        broadcast_transform(msg_transform, transform_broadcaster, "front_right_wheel", "roboracer_1", np.asarray([0.33, -0.118, 0.0]), quaternion_from_euler(0.0, 0.0, np.arctan((2*0.141537*np.tan(autodrive.steering))/(2*0.141537+2*0.0765*np.tan(autodrive.steering)))))
-        broadcast_transform(msg_transform, transform_broadcaster, "rear_left_wheel", "roboracer_1", np.asarray([0.0, 0.118, 0.0]), quaternion_from_euler(0.0, autodrive.encoder_angles[0]%6.283, 0.0))
-        broadcast_transform(msg_transform, transform_broadcaster, "rear_right_wheel", "roboracer_1", np.asarray([0.0, -0.118, 0.0]), quaternion_from_euler(0.0, autodrive.encoder_angles[1]%6.283, 0.0))
-        # LIDAR
-        publish_lidar_scan(autodrive.lidar_scan_rate, autodrive.lidar_range_array, autodrive.lidar_intensity_array)
-        # Cameras
-        publish_camera_images(autodrive.front_camera_image)
-        # Lap data
-        publish_lap_count_data(autodrive.lap_count)
-        publish_lap_time_data(autodrive.lap_time)
-        publish_last_lap_time_data(autodrive.last_lap_time)
-        publish_best_lap_time_data(autodrive.best_lap_time)
-        publish_collision_count_data(autodrive.collision_count)
-
         ########################################################################
         # OUTGOING DATA
         ########################################################################
@@ -338,40 +305,40 @@ def bridge(sid, data):
 # AUTODRIVE ROS 2 BRIDGE INFRASTRUCTURE
 #########################################################
 
-# def timer_callback():
-#     global autodrive
-#     # Actuator feedbacks
-#     publish_actuator_feedbacks(autodrive.throttle, autodrive.steering)
-#     # Speed
-#     publish_speed_data(autodrive.speed)
-#     # Wheel encoders
-#     publish_encoder_data(autodrive.encoder_angles)
-#     # IPS
-#     publish_ips_data(autodrive.position)
-#     # IMU
-#     publish_imu_data(autodrive.orientation_quaternion, autodrive.angular_velocity, autodrive.linear_acceleration)
-#     # Cooordinate transforms
-#     broadcast_transform(msg_transform, transform_broadcaster, "roboracer_1", "world", autodrive.position, autodrive.orientation_quaternion) # Vehicle frame defined at center of rear axle
-#     broadcast_transform(msg_transform, transform_broadcaster, "left_encoder", "roboracer_1", np.asarray([0.0, 0.12, 0.0]), quaternion_from_euler(0.0, 120*autodrive.encoder_angles[0]%6.283, 0.0))
-#     broadcast_transform(msg_transform, transform_broadcaster, "right_encoder", "roboracer_1", np.asarray([0.0, -0.12, 0.0]), quaternion_from_euler(0.0, 120*autodrive.encoder_angles[1]%6.283, 0.0))
-#     broadcast_transform(msg_transform, transform_broadcaster, "ips", "roboracer_1", np.asarray([0.08, 0.0, 0.055]), np.asarray([0.0, 0.0, 0.0, 1.0]))
-#     broadcast_transform(msg_transform, transform_broadcaster, "imu", "roboracer_1", np.asarray([0.08, 0.0, 0.055]), np.asarray([0.0, 0.0, 0.0, 1.0]))
-#     broadcast_transform(msg_transform, transform_broadcaster, "lidar", "roboracer_1", np.asarray([0.2733, 0.0, 0.096]), np.asarray([0.0, 0.0, 0.0, 1.0]))
-#     broadcast_transform(msg_transform, transform_broadcaster, "front_camera", "roboracer_1", np.asarray([-0.015, 0.0, 0.15]), np.asarray([0, 0.0871557, 0, 0.9961947]))
-#     broadcast_transform(msg_transform, transform_broadcaster, "front_left_wheel", "roboracer_1", np.asarray([0.33, 0.118, 0.0]), quaternion_from_euler(0.0, 0.0, np.arctan((2*0.141537*np.tan(autodrive.steering))/(2*0.141537-2*0.0765*np.tan(autodrive.steering)))))
-#     broadcast_transform(msg_transform, transform_broadcaster, "front_right_wheel", "roboracer_1", np.asarray([0.33, -0.118, 0.0]), quaternion_from_euler(0.0, 0.0, np.arctan((2*0.141537*np.tan(autodrive.steering))/(2*0.141537+2*0.0765*np.tan(autodrive.steering)))))
-#     broadcast_transform(msg_transform, transform_broadcaster, "rear_left_wheel", "roboracer_1", np.asarray([0.0, 0.118, 0.0]), quaternion_from_euler(0.0, autodrive.encoder_angles[0]%6.283, 0.0))
-#     broadcast_transform(msg_transform, transform_broadcaster, "rear_right_wheel", "roboracer_1", np.asarray([0.0, -0.118, 0.0]), quaternion_from_euler(0.0, autodrive.encoder_angles[1]%6.283, 0.0))
-#     # LIDAR
-#     publish_lidar_scan(autodrive.lidar_scan_rate, autodrive.lidar_range_array, autodrive.lidar_intensity_array)
-#     # Cameras
-#     publish_camera_images(autodrive.front_camera_image)
-#     # Lap data
-#     publish_lap_count_data(autodrive.lap_count)
-#     publish_lap_time_data(autodrive.lap_time)
-#     publish_last_lap_time_data(autodrive.last_lap_time)
-#     publish_best_lap_time_data(autodrive.best_lap_time)
-#     publish_collision_count_data(autodrive.collision_count)
+def timer_callback():
+    global autodrive
+    # Actuator feedbacks
+    publish_actuator_feedbacks(autodrive.throttle, autodrive.steering)
+    # Speed
+    publish_speed_data(autodrive.speed)
+    # Wheel encoders
+    publish_encoder_data(autodrive.encoder_angles)
+    # IPS
+    publish_ips_data(autodrive.position)
+    # IMU
+    publish_imu_data(autodrive.orientation_quaternion, autodrive.angular_velocity, autodrive.linear_acceleration)
+    # Cooordinate transforms
+    broadcast_transform(msg_transform, transform_broadcaster, "roboracer_1", "world", autodrive.position, autodrive.orientation_quaternion) # Vehicle frame defined at center of rear axle
+    broadcast_transform(msg_transform, transform_broadcaster, "left_encoder", "roboracer_1", np.asarray([0.0, 0.12, 0.0]), quaternion_from_euler(0.0, 120*autodrive.encoder_angles[0]%6.283, 0.0))
+    broadcast_transform(msg_transform, transform_broadcaster, "right_encoder", "roboracer_1", np.asarray([0.0, -0.12, 0.0]), quaternion_from_euler(0.0, 120*autodrive.encoder_angles[1]%6.283, 0.0))
+    broadcast_transform(msg_transform, transform_broadcaster, "ips", "roboracer_1", np.asarray([0.08, 0.0, 0.055]), np.asarray([0.0, 0.0, 0.0, 1.0]))
+    broadcast_transform(msg_transform, transform_broadcaster, "imu", "roboracer_1", np.asarray([0.08, 0.0, 0.055]), np.asarray([0.0, 0.0, 0.0, 1.0]))
+    broadcast_transform(msg_transform, transform_broadcaster, "lidar", "roboracer_1", np.asarray([0.2733, 0.0, 0.096]), np.asarray([0.0, 0.0, 0.0, 1.0]))
+    broadcast_transform(msg_transform, transform_broadcaster, "front_camera", "roboracer_1", np.asarray([-0.015, 0.0, 0.15]), np.asarray([0, 0.0871557, 0, 0.9961947]))
+    broadcast_transform(msg_transform, transform_broadcaster, "front_left_wheel", "roboracer_1", np.asarray([0.33, 0.118, 0.0]), quaternion_from_euler(0.0, 0.0, np.arctan((2*0.141537*np.tan(autodrive.steering))/(2*0.141537-2*0.0765*np.tan(autodrive.steering)))))
+    broadcast_transform(msg_transform, transform_broadcaster, "front_right_wheel", "roboracer_1", np.asarray([0.33, -0.118, 0.0]), quaternion_from_euler(0.0, 0.0, np.arctan((2*0.141537*np.tan(autodrive.steering))/(2*0.141537+2*0.0765*np.tan(autodrive.steering)))))
+    broadcast_transform(msg_transform, transform_broadcaster, "rear_left_wheel", "roboracer_1", np.asarray([0.0, 0.118, 0.0]), quaternion_from_euler(0.0, autodrive.encoder_angles[0]%6.283, 0.0))
+    broadcast_transform(msg_transform, transform_broadcaster, "rear_right_wheel", "roboracer_1", np.asarray([0.0, -0.118, 0.0]), quaternion_from_euler(0.0, autodrive.encoder_angles[1]%6.283, 0.0))
+    # LIDAR
+    publish_lidar_scan(autodrive.lidar_scan_rate, autodrive.lidar_range_array, autodrive.lidar_intensity_array)
+    # Cameras
+    publish_camera_images(autodrive.front_camera_image)
+    # Lap data
+    publish_lap_count_data(autodrive.lap_count)
+    publish_lap_time_data(autodrive.lap_time)
+    publish_last_lap_time_data(autodrive.last_lap_time)
+    publish_best_lap_time_data(autodrive.best_lap_time)
+    publish_collision_count_data(autodrive.collision_count)
 
 def main():
     # Global declarations
@@ -397,8 +364,8 @@ def main():
     } # Subscriber callback functions
     [autodrive_bridge.create_subscription(e.type, e.topic, callbacks[e.topic], qos_profile) for e in config.pub_sub_dict.subscribers] # Subscribers
 
-    # timer_period = 0.025 # Timer period in seconds
-    # autodrive_bridge.create_timer(timer_period, timer_callback)
+    timer_period = 1.0/50.0 # Timer period in seconds
+    autodrive_bridge.create_timer(timer_period, timer_callback)
 
     # If num_threads is not specified then num_threads will be multiprocessing.cpu_count() if it is implemented
     # Otherwise it will use a single thread
