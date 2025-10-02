@@ -50,7 +50,7 @@ RUN apt update --fix-missing \
 
 # Copy AutoDRIVE Devkit (ROS 2 API)
 COPY autodrive_devkit/. /home/autodrive_devkit/src/autodrive_devkit
-RUN pip install --upgrade pip setuptools packaging
+RUN python3 -m pip install --upgrade "setuptools<80" wheel packaging
 RUN cd /home/autodrive_devkit && colcon build
 RUN /bin/bash -c 'echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc' \
     && /bin/bash -c 'echo "source /home/autodrive_devkit/install/setup.bash" >> ~/.bashrc' \
